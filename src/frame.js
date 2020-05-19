@@ -1,12 +1,17 @@
-export function frame(p5) {
-  const topLeft = [0, 0];
-  const topRight = [p5.windowWidth, 0];
-  const bottomRight = [p5.windowWidth, p5.windowHeight];
-  const bottomLeft = [0, p5.windowHeight];
+import { p5Instance } from './index';
 
-  p5.strokeWeight(5)
+const FRAME_PADDING = 10;
+const FRAME_WEIGHT = 2;
 
-  p5.quad(...[
+export function frame() {
+  const topLeft = [FRAME_PADDING, FRAME_PADDING];
+  const topRight = [p5Instance.windowWidth - FRAME_PADDING, FRAME_PADDING];
+  const bottomRight = [p5Instance.windowWidth - FRAME_PADDING, p5Instance.windowHeight - FRAME_PADDING];
+  const bottomLeft = [FRAME_PADDING, p5Instance.windowHeight - FRAME_PADDING];
+
+  p5Instance.strokeWeight(FRAME_WEIGHT);
+
+  p5Instance.quad(...[
     ...topLeft,
     ...topRight,
     ...bottomRight,

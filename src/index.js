@@ -2,6 +2,7 @@ import * as P5 from 'p5';
 import { frame } from './frame';
 
 const container = document.querySelector('#canvas');
+let p5Instance;
 
 function setConfig(p5) {
 
@@ -10,9 +11,13 @@ function setConfig(p5) {
   };
 
   p5.draw = () => {
-    frame(p5);
+    frame();
   }
+
+  p5Instance = p5;
 
 }
 
 new P5(setConfig, container);
+
+export { p5Instance };
